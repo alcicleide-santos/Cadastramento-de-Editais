@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+        template="/template.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+    <ui:define name="title">
+        Listagem de Pesquisadores
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formPesquisadores">
+            <p:growl showDetail="true" showSummary="true" />
+
+
+            <h1>Listagem de Pesquisadores</h1>
+
+            <p:commandButton action="/admin/pesquisador.xhtml" value="Novo pesquisador"/>
+            <p:button outcome="/admin/pesquisadores.xhtml" value="Cancelar"/>
+
+            <br/>
+            <br/>
+
+            <p:dataTable value="#{pesquisadorBean.pesquisadores}" var="p">
+
+                <p:column headerText="id">
+                    #{p.id}
+                </p:column>
+
+                <p:column headerText="nome">
+                    #{p.nome}
+                </p:column>
+
+                <p:column headerText="cpf">
+                    #{p.cpf}
+                </p:column>
+
+                <p:column headerText="telefone">
+                    #{p.telefone}
+                </p:column>
+
+                <p:column headerText="email">
+                    #{p.email}
+                </p:column>
+
+                <p:column headerText="instituicao">
+                    #{p.instituicao}
+                </p:column>
+
+                <p:column headerText="siap">
+                    #{p.siap}
+                </p:column>
+
+                <p:column headerText="area de pesquisa">
+                    #{p.areaPesquisa}
+                </p:column>
+
+
+                <p:column headerText="Operações">
+                    <p:commandButton value="Editar" action="/admin/pesquisador.xhtml" ajax="false">
+                        <f:setPropertyActionListener target="#{pesquisadorBean.pesquisador}" value="#{p}"/>
+                    </p:commandButton>
+
+
+                    <p:commandButton value="Excluir" action="#{pesquisadorBean.excluir()}" ajax="false">
+                        <f:setPropertyActionListener target="#{pesquisadorBean.pesquisador}" value="#{p}"/>
+                    </p:commandButton>
+
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

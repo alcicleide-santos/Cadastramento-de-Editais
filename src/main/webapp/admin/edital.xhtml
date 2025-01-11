@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+        template="/template.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+    <ui:define name="title">
+        Cadastro/Edição de Editais
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formEdital">
+            <p:growl showDetail="true" showSummary="true" />
+            <h1>Cadastro de Edital</h1>
+            <h:inputHidden value="#{editalBean.edital.id}"/>
+            <h:panelGrid id="painel" columns="2">
+                <p:outputLabel value="Titulo"/>
+                <p:inputText value="#{editalBean.edital.titulo}"/>
+
+                <p:outputLabel value="editalNumero"/>
+                <p:inputText value="#{editalBean.edital.editalNumero}"/>
+
+                <p:outputLabel value="dataInicio"/>
+                <p:calendar value="#{editalBean.edital.dataInicio}" pattern="dd/MM/yyyy"/>
+
+                <p:outputLabel value="dataFim"/>
+                <p:calendar value="#{editalBean.edital.dataFim}" pattern="dd/MM/yyyy"/>
+
+            </h:panelGrid>
+
+
+            <p:button outcome="/admin/editais.xhtml" value="Cancelar"/>
+            <p:commandButton action="#{editalBean.salvar()}" value="Salvar" ajax="false"/>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
