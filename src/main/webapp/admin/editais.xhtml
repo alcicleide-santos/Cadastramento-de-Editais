@@ -20,8 +20,9 @@
 
             <h1>Listagem de Editais</h1>
 
-            <p:commandButton action="/admin/edital.xhtml" value="Novo edital"/>
+            <p:commandButton action="/admin/edital.xhtml" value="Novo Edital"/>
             <p:button outcome="/admin/editais.xhtml" value="Cancelar"/>
+            <p:button outcome="/menu.xhtml" value="menu Principal"/>
 
             <br/>
             <br/>
@@ -36,18 +37,18 @@
                 #{e.titulo}
             </p:column>
 
-            <p:column headerText="edital_numero">
+            <p:column headerText="número do edital">
                 #{e.editalNumero}
             </p:column>
 
-            <p:column headerText="data_inicio">
+            <p:column headerText="Data início">
                 <h:outputText value="#{e.dataInicio}">
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                 </h:outputText>
             </p:column>
 
 
-            <p:column headerText="data_fim">
+            <p:column headerText="data fim">
                 <h:outputText value="#{e.dataFim}">
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                 </h:outputText>
@@ -62,6 +63,11 @@
                 <p:commandButton value="Excluir" action="#{editalBean.excluir()}" ajax="false">
                     <f:setPropertyActionListener target="#{editalBean.edital}" value="#{e}"/>
                 </p:commandButton>
+
+                <p:commandButton value="Detalhes" action="#{editalBean.detalhes()}" ajax="false">
+                    <f:setPropertyActionListener target="#{editalBean.edital}" value="#{e}"/>
+                </p:commandButton>
+
 
             </p:column>
 

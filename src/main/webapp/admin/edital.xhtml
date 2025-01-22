@@ -19,16 +19,16 @@
             <h1>Cadastro de Edital</h1>
             <h:inputHidden value="#{editalBean.edital.id}"/>
             <h:panelGrid id="painel" columns="2">
-                <p:outputLabel value="Titulo"/>
+                <p:outputLabel value="Título"/>
                 <p:inputText value="#{editalBean.edital.titulo}"/>
 
-                <p:outputLabel value="editalNumero"/>
+                <p:outputLabel value="Número do Edital"/>
                 <p:inputText value="#{editalBean.edital.editalNumero}"/>
 
-                <p:outputLabel value="dataInicio"/>
+                <p:outputLabel value="Data de Início"/>
                 <p:calendar value="#{editalBean.edital.dataInicio}" pattern="dd/MM/yyyy"/>
 
-                <p:outputLabel value="dataFim"/>
+                <p:outputLabel value="Data do Fim"/>
                 <p:calendar value="#{editalBean.edital.dataFim}" pattern="dd/MM/yyyy"/>
 
             </h:panelGrid>
